@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Task1.DataAccess.Models.Items>
+
+@{
+    ViewData["Title"] = "All Items";
+}
+
+
+<h1>All Items</h1>
+
+<h5>@Html.ActionLink("Create an Item", "Create", "Items")</h5>
+
+<table class="table">
+    <thead>
+        <tr>            
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rate)
+            </th>
+            <th>
+                Action
+            </th>            
+        </tr>
+    </thead> 
+    
+    <tbody>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(data => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(data => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(data => item.UnitType)
+            </td>
+            <td>
+                @Html.DisplayFor(data => item.Rate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.ItemId}, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.ItemId}, new { @class = "btn btn-danger" })                
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
